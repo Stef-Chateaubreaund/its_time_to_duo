@@ -9,23 +9,26 @@ class Card {
 class Unit extends Card {
     constructor(name, cost, power, res) {
         super(name,cost,power,res);
-        this.power = power;
         this.res = res;
+        this.power = power;
+        
     }
 
     attack(target) {
         target.res -= this.power;
+        
         console.log(`${this.name} attacked ${target.name} for ${this.power}`)
     }
 
 }
 
 class Effect extends Card {
-    constructor(name,cost, text, stat, magnitude){
+    constructor(name,text,cost, stat, magnitude){
         super(name,cost, text, stat, magnitude);
         this.text = text;
-        this.stat = stat;
         this.magnitude = magnitude;
+        this.stat = stat;
+   
     }
 
     play(target) {
@@ -37,7 +40,7 @@ class Effect extends Card {
                 target.power += this.magnitude;
             }
         } else {
-            throw new Error("Target must be an effect!");
+            throw new Error("the target must be an effect?");
         }
     }
 }
